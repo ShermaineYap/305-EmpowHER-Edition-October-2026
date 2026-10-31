@@ -14,7 +14,7 @@
 - Live app: https://takethefloor.streamlit.app
 - GitHub: https://github.com/ShermaineYap/305-EmpowHER-Edition-October-2026
 - Kaggle notebook: KAGGLE_LINK_HERE
-- Google Slides: GOOGLE_SLIDES_LINK_HERE
+- Google Slides: https://docs.google.com/presentation/d/1iPhlI6QpyMbQ3hok4iMaX1GcfW4snYfYe1cvUaxeocU/edit?usp=sharing
 - Feature demo (7:51, narrated + captioned): https://github.com/ShermaineYap/305-EmpowHER-Edition-October-2026/blob/main/videos/TakeTheFloor_feature_demo.mp4
 - 5-min backup demo: https://github.com/ShermaineYap/305-EmpowHER-Edition-October-2026/blob/main/videos/TakeTheFloor_backup_demo_5min.mp4
 
