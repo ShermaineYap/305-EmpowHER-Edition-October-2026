@@ -9,6 +9,7 @@
 | **Theme alignment** | Solutions that improve **accessibility** and **leadership development** outcomes |
 | **Opt-in challenges** | LLM Gemma Challenge · Kaggle Challenge |
 | **Live app** | https://takethefloor.streamlit.app |
+| **Devpost** | https://devpost.com/software/takethefloor |
 | **Kaggle notebook** | [`notebooks/takethefloor_meeting_equity.ipynb`](notebooks/takethefloor_meeting_equity.ipynb) — KAGGLE_LINK_HERE |
 | **Slides** | [`slides/TakeTheFloor_pitch_deck.pptx`](slides/TakeTheFloor_pitch_deck.pptx) · [PDF](slides/TakeTheFloor_pitch_deck.pdf) · Google Slides: https://docs.google.com/presentation/d/1iPhlI6QpyMbQ3hok4iMaX1GcfW4snYfYe1cvUaxeocU/edit?usp=sharing |
 | **Feature demo (MP4, 7:51, narrated + captioned)** | [`videos/TakeTheFloor_feature_demo.mp4`](videos/TakeTheFloor_feature_demo.mp4) · captions: [`.srt`](videos/TakeTheFloor_feature_demo.srt) |
