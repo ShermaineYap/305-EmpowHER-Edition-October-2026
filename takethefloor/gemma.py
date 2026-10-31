@@ -3,7 +3,7 @@
 Backends (chosen automatically, in this order):
 
 * ``google`` – Gemma on the Gemini API / Google AI Studio (``GEMINI_API_KEY`` or ``GOOGLE_API_KEY``).
-  Tries ``gemma-4-31b-it`` first, then falls back to ``gemma-4-26b-a4b-it`` and ``gemma-3-27b-it``.
+  Tries the fast mixture-of-experts ``gemma-4-26b-a4b-it`` first, then falls back to ``gemma-4-31b-it``.
 * ``ollama`` – a local Gemma via Ollama (``OLLAMA_HOST``, default model ``gemma3:4b``) so a meeting
   transcript never has to leave the laptop.
 * ``offline`` – deterministic rules only. The app still works end to end; results are labelled as rule-based.
@@ -20,36 +20,62 @@ import os
 import re
 import time
 
-DEFAULT_GOOGLE_MODELS = ["gemma-4-31b-it", "gemma-4-26b-a4b-it", "gemma-3-27b-it"]
+DEFAULT_GOOGLE_MODELS = ["gemma-4-26b-a4b-it", "gemma-4-31b-it"]
 DEFAULT_OLLAMA_MODEL = "gemma3:4b"
 MAX_TRANSCRIPT_CHARS = 14000
+SYSTEM = "You are a fast, careful JSON API for meeting analysis. Do not deliberate at length. Output only the requested JSON."
+CACHE_FILE = os.path.join(os.path.dirname(__file__), "gemma_cache.json")
+_DISK_CACHE: dict | None = None
+
+
+def _disk_cache() -> dict:
+    global _DISK_CACHE
+    if _DISK_CACHE is None:
+        try:
+            with open(CACHE_FILE, encoding="utf-8") as f:
+                _DISK_CACHE = json.load(f)
+        except (OSError, json.JSONDecodeError):
+            _DISK_CACHE = {}
+    return _DISK_CACHE
 
 
 class GemmaClient:
     def __init__(self, api_key: str | None = None, backend: str | None = None, model: str | None = None):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         self.ollama_host = os.getenv("OLLAMA_HOST")
+        # Demo-cache replay is allowed unless the user explicitly chose rules-only (backend="offline").
+        self.allow_cache = backend != "offline"
         self.backend = backend or ("google" if self.api_key else "ollama" if self.ollama_host else "offline")
         self.models = [model] if model else (DEFAULT_GOOGLE_MODELS if self.backend == "google" else [os.getenv("OLLAMA_MODEL", DEFAULT_OLLAMA_MODEL)])
         self.active_model: str | None = None
+        self.cache_hits = 0
+        self.live_calls = 0
         self.last_error: str | None = None
         self._client = None
         if self.backend == "google":
             try:
                 from google import genai
 
-                self._client = genai.Client(api_key=self.api_key)
+                from google.genai import types
+
+                self._client = genai.Client(api_key=self.api_key, http_options=types.HttpOptions(timeout=150_000))
             except Exception as exc:  # pragma: no cover - import/env failure
                 self.last_error = f"google-genai unavailable: {exc}"
                 self.backend = "offline"
 
     @property
-    def enabled(self) -> bool:
+    def live(self) -> bool:
         return self.backend != "offline"
 
     @property
+    def enabled(self) -> bool:
+        return self.live or (self.allow_cache and bool(_disk_cache()))
+
+    @property
     def label(self) -> str:
-        if not self.enabled:
+        if self.cache_hits and not self.live_calls:
+            return f"Gemma · {self.active_model or 'gemma-4'} · replayed from a recorded live run (demo meeting)"
+        if not self.live:
             return "Rules only (offline)"
         return f"Gemma · {self.active_model or self.models[0]} · {'Google AI Studio' if self.backend == 'google' else 'local Ollama'}"
 
@@ -70,13 +96,13 @@ class GemmaClient:
                         resp = self._client.models.generate_content(
                             model=model,
                             contents=prompt,
-                            config=types.GenerateContentConfig(temperature=temperature, max_output_tokens=2048),
+                            config=types.GenerateContentConfig(temperature=temperature, max_output_tokens=8192, system_instruction=SYSTEM),
                         )
                         text = resp.text
                     else:
                         import urllib.request
 
-                        body = json.dumps({"model": model, "prompt": prompt, "stream": False, "options": {"temperature": temperature}}).encode()
+                        body = json.dumps({"model": model, "system": SYSTEM, "prompt": prompt, "stream": False, "options": {"temperature": temperature}}).encode()
                         req = urllib.request.Request(self.ollama_host.rstrip("/") + "/api/generate", body, {"Content-Type": "application/json"})
                         with urllib.request.urlopen(req, timeout=120) as r:
                             text = json.loads(r.read())["response"]
@@ -87,8 +113,8 @@ class GemmaClient:
                 except Exception as exc:
                     self.last_error = f"{model}: {exc}"
                     msg = str(exc).lower()
-                    if "not found" in msg or "404" in msg or "not supported" in msg:
-                        break  # try the next model
+                    if any(k in msg for k in ("not found", "404", "not supported", "500", "internal", "invalid")):
+                        break  # try the next model straight away
                     time.sleep(1.5 * (attempt + 1))
         return None
 
@@ -102,13 +128,32 @@ def _hash(s: str) -> str:
 
 
 def _cached_generate(client: GemmaClient, key: str, prompt: str, temperature: float):
+    """In-memory cache, then the committed disk cache of real Gemma runs (demo meetings), then a live call."""
     cache = client.__dict__.setdefault("_cache", {})
-    if key not in cache:
-        out = client._raw_generate(prompt, temperature)
-        if out is None:
-            return None
-        cache[key] = out
-    return cache[key]
+    if key in cache:
+        return cache[key]
+    disk = _disk_cache()
+    if key in disk and os.getenv("TTF_NO_CACHE") != "1":
+        client.cache_hits += 1
+        cache[key] = disk[key]["text"]
+        client.active_model = client.active_model or disk[key].get("model")
+        return cache[key]
+    if not client.live:
+        return None
+    out = client._raw_generate(prompt, temperature)
+    if out is None:
+        return None
+    client.live_calls += 1
+    cache[key] = out
+    if os.getenv("TTF_WRITE_CACHE") == "1":
+        disk[key] = {"model": client.active_model, "text": out}
+    return out
+
+
+def save_disk_cache() -> int:
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(_disk_cache(), f, indent=1, ensure_ascii=False)
+    return len(_disk_cache())
 
 
 def extract_json(text: str):
@@ -246,7 +291,17 @@ def recap(client: GemmaClient, turns, credit_events: list[dict]):
         return None
     ideas = "\n".join(f"{n}. {e['originator']} at {_fmt(e['original_time'])}: \"{e['original_text'][:220]}\"" for n, e in enumerate(credit_events, 1)) or "(none)"
     data = client.generate_json(RECAP_PROMPT.format(transcript=transcript_for_prompt(turns), ideas=ideas))
-    return data if isinstance(data, dict) and data.get("summary") else None
+    if not (isinstance(data, dict) and data.get("summary")):
+        return None
+    for k in ("summary", "decisions", "open_questions"):
+        v = data.get(k) or []
+        if isinstance(v, str):
+            v = [x.strip() for x in re.split(r"(?<=[.!?])\s+", v) if x.strip()]
+        data[k] = [str(x) if not isinstance(x, dict) else "; ".join(str(y) for y in x.values()) for x in v]
+    items = data.get("action_items") or []
+    data["action_items"] = [a if isinstance(a, dict) else {"owner": "", "task": str(a), "due": ""} for a in items]
+    data["idea_titles"] = {str(k): str(v) for k, v in (data.get("idea_titles") or {}).items()} if isinstance(data.get("idea_titles"), dict) else {}
+    return data
 
 
 def coach(client: GemmaClient, evidence: dict):
@@ -255,7 +310,14 @@ def coach(client: GemmaClient, evidence: dict):
     hedged = "\n".join(f'  * "{s}"' for s in evidence["hedged_sentences"][:6]) or "  (none)"
     prompt = COACH_PROMPT.format(hedged=hedged, **{k: v for k, v in evidence.items() if k != "hedged_sentences"})
     data = client.generate_json(prompt)
-    return data if isinstance(data, dict) and data.get("moves") else None
+    if not (isinstance(data, dict) and data.get("moves")):
+        return None
+    for k in ("strengths", "moves", "scripts"):
+        v = data.get(k) or []
+        data[k] = [v] if isinstance(v, str) else [str(x) for x in v]
+    data["rewrites"] = [r for r in (data.get("rewrites") or []) if isinstance(r, dict) and r.get("original") and r.get("rewrite")]
+    data["headline"] = str(data.get("headline") or "")
+    return data
 
 
 def _fmt(sec: float) -> str:
