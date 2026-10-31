@@ -86,6 +86,20 @@ def _explicit_builds(turns: list[Turn], cw: list[list[str]]) -> dict[int, tuple[
     return found
 
 
+def idea_title(text: str, max_words: int = 10) -> str:
+    """Rule-based short title: the clause right after the proposal phrase."""
+    m = PROPOSAL.search(text)
+    clause = text[m.end():] if m else text
+    clause = re.split(r"[,.;:?!—–]|\b(so|because|and then|which)\b", clause.strip(), maxsplit=1)[0]
+    clause = re.sub(r"^(?:we|you|i|they)\s+(?:could |should |can |might )?(?:do |did )?", "", clause.strip(), flags=re.I)
+    clause = re.sub(r"^(?:could|should|can|might)\s+(?:do\s+)?", "", clause, flags=re.I)
+    words = clause.split()[:max_words]
+    while words and words[-1].lower() in {"the", "of", "a", "an", "to", "and", "at", "for", "with", "on", "in"}:
+        words.pop()
+    title = " ".join(words).strip()
+    return (title[:1].upper() + title[1:]) if len(words) >= 3 else text.split(".")[0][:70]
+
+
 def detect(turns: list[Turn], min_gap: float = 20.0, sim_threshold: float = 0.28, min_shared: int = 3) -> list[dict]:
     cw = [content_words(t.text) for t in turns]
     originals = [i for i, t in enumerate(turns) if (PROPOSAL.search(t.text) and len(cw[i]) >= 4) or len(cw[i]) >= 10]
@@ -138,7 +152,7 @@ def detect(turns: list[Turn], min_gap: float = 20.0, sim_threshold: float = 0.28
         else:
             continue  # original was acknowledged; restating is just agreement
 
-        overlap = sorted(shared(cw[i], cw[j]))
+        overlap = sorted(shared(cw[i], cw[j]), key=lambda w: cw[i].index(w) if w in cw[i] else 99)
         events.append(
             {
                 "outcome": outcome,
@@ -152,7 +166,7 @@ def detect(turns: list[Turn], min_gap: float = 20.0, sim_threshold: float = 0.28
                 "credit_evidence": evidence,
                 "similarity": round(sim, 2),
                 "shared_terms": overlap[:8],
-                "summary": None,
+                "summary": idea_title(a.text),
                 "detected_by": "rules",
             }
         )

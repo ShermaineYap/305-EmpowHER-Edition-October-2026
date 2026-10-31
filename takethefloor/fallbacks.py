@@ -32,7 +32,7 @@ def recap(turns, credit_events) -> dict:
             owner = t.speaker if re.search(r"\bi'?ll|\bi will", s, re.I) else ""
             actions.append({"owner": owner, "task": s, "due": ""})
     questions = [f"{t.speaker}: {s}" for t, s in sentences if QUESTION.search(s) and len(s.split()) >= 6][-4:]
-    titles = {str(n): " ".join(e["shared_terms"][:4]).title() for n, e in enumerate(credit_events, 1)}
+    titles = {str(n): e["summary"] for n, e in enumerate(credit_events, 1)}
     return {"summary": summary, "decisions": decisions, "action_items": actions[:8], "open_questions": questions, "idea_titles": titles}
 
 

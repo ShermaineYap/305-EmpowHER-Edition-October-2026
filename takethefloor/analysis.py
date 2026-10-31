@@ -30,7 +30,7 @@ def analyze(turns: list[Turn], client: gemma.GemmaClient | None = None, timestam
     recap_data = recap_data or fallbacks.recap(turns, credit_events)
     titles = recap_data.get("idea_titles") or {}
     for n, e in enumerate(credit_events, 1):
-        e["summary"] = titles.get(str(n)) or " ".join(e["shared_terms"][:4]).title()
+        e["summary"] = titles.get(str(n)) or e["summary"]
 
     for s in stats.values():
         name = s["speaker"]
