@@ -185,11 +185,11 @@ async function icon(Comp, color, size = 256) {
     valAxisMaxVal: 100, valAxisMinVal: 0, valGridLine: { color: "E4E3DF", size: 0.75 }, catGridLine: { style: "none" }, showLegend: false, catAxisOrientation: "maxMin",
     objectName: "Floor Health chart", altText: "Floor Health: product launch 38, project group 64, healthy stand-up 86.",
   });
-  const ev = [["5 / 5", "planted interruptions found"], ["4 / 4", "idea-credit events found"], ["0", "false alarms, incl. the healthy control"], ["0.20–0.70", "stable similarity range (sensitivity sweep)"]];
+  const ev = [["5 / 5", "planted interruptions found"], ["4 / 4", "idea-credit events found"], ["0", "false alarms, incl. the healthy control"], ["6 / 6", "Gemma agreed with hand labels"]];
   ev.forEach(([big, small], k) => {
     const x = 5.75 + (k % 2) * 1.9, y = 1.2 + Math.floor(k / 2) * 1.5;
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 1.75, h: 1.3, rectRadius: 0.1, fill: { color: C.background2 }, line: { color: C.background2 }, objectName: `Stat ${k + 1}` });
-    s.addText(big, { x: x + 0.1, y: y + 0.1, w: 1.55, h: 0.55, fontSize: k === 3 ? 18 : 24, bold: true, color: C.accent1, align: "center", valign: "middle", margin: 0, isTextBox: true, fontFace: THEME.headFontFace });
+    s.addText(big, { x: x + 0.1, y: y + 0.1, w: 1.55, h: 0.55, fontSize: 24, bold: true, color: C.accent1, align: "center", valign: "middle", margin: 0, isTextBox: true, fontFace: THEME.headFontFace });
     s.addText(small, { x: x + 0.1, y: y + 0.65, w: 1.55, h: 0.6, fontSize: 11, color: C.text1, align: "center", valign: "top", margin: 0, isTextBox: true });
   });
   s.addText("Honest scope: three synthetic, hand-labelled meetings test that the detectors behave as designed — not real-world accuracy. Full method, sensitivity analysis and limitations are in the Kaggle notebook.", { x: 0.5, y: 4.3, w: 9.0, h: 0.75, fontSize: 12, italic: true, color: "52514E", margin: 0, isTextBox: true });
@@ -237,10 +237,11 @@ async function icon(Comp, color, size = 256) {
   s.addText("Make the invisible visible", { placeholder: "title" });
   s.addText("TakeTheFloor helps every voice get heard — and get the credit.", { placeholder: "body" });
   s.addText([
+    { text: "Live app: takethefloor.streamlit.app", options: { breakLine: true, bold: true } },
     { text: "Code & README: github.com/ShermaineYap/305-EmpowHER-Edition-October-2026", options: { breakLine: true } },
     { text: "Analysis: notebooks/takethefloor_meeting_equity.ipynb (Kaggle)", options: { breakLine: true } },
     { text: "AI used: Gemma (in-app analysis); Claude (coding assistant) — cited in README", options: {} },
-  ], { x: 0.6, y: 3.95, w: 8.8, h: 1.1, fontSize: 13, color: "CADCFC", margin: 0, isTextBox: true });
+  ], { x: 0.6, y: 3.75, w: 8.8, h: 1.35, fontSize: 13, color: "CADCFC", margin: 0, isTextBox: true });
   s.addNotes("Thank you. Everything is open source on GitHub with the Kaggle notebook. Happy to take questions.");
 
   const out = REPO + "/slides/TakeTheFloor_pitch_deck.pptx";
