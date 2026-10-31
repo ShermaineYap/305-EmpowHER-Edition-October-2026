@@ -11,7 +11,7 @@
 | **Live app** | https://takethefloor.streamlit.app |
 | **Kaggle notebook** | [`notebooks/takethefloor_meeting_equity.ipynb`](notebooks/takethefloor_meeting_equity.ipynb) — KAGGLE_LINK_HERE |
 | **Slides** | [`slides/TakeTheFloor_pitch_deck.pptx`](slides/TakeTheFloor_pitch_deck.pptx) · [PDF](slides/TakeTheFloor_pitch_deck.pdf) · Google Slides: GOOGLE_SLIDES_LINK_HERE |
-| **10-min feature demo (MP4)** | FEATURE_VIDEO_LINK_HERE |
+| **Feature demo (MP4, 7:51, narrated + captioned)** | [`videos/TakeTheFloor_feature_demo.mp4`](videos/TakeTheFloor_feature_demo.mp4) · captions: [`.srt`](videos/TakeTheFloor_feature_demo.srt) |
 | **5-min backup demo (MP4)** | [`videos/TakeTheFloor_backup_demo_5min.mp4`](videos/TakeTheFloor_backup_demo_5min.mp4) (captioned walkthrough) |
 | **Team** | Shermaine Yap Shi Min — Asia Pacific University of Technology & Innovation (APU), Malaysia — solo: research, analytics, engineering, design, pitch |
 
@@ -149,7 +149,7 @@ takethefloor/                  analysis engine
 data/                          synthetic demo meetings + ground-truth labels (+ generator)
 notebooks/                     Kaggle analysis notebook
 slides/                        pitch deck (.pptx, .pdf) + generator script
-videos/                        5-minute captioned backup demo (MP4)
+videos/                        feature demo (narrated, captioned) + 5-minute backup demo (MP4)
 docs/screenshots/              app and notebook screenshots
 docs/                          video scripts and Devpost write-up
 scripts/warm_gemma_cache.py    records real Gemma runs for the demo meetings
@@ -175,7 +175,8 @@ tests/                         pytest suite
 
 **AI tools used** (per hackathon rules)
 * **Gemma 4** (Google, via Google AI Studio / Gemini API) — in-app analysis: interruption classification, idea titles, recaps, coaching.
-* **Claude** (Anthropic) — coding assistant used to help write and test the code, notebook, slide deck and documentation, under my direction and review.
+* **Claude** (Anthropic) — coding assistant used to help write and test the code, notebook, slide deck, documentation and demo videos, under my direction and review.
+* **Piper text-to-speech** (en_US "amy" voice, open source) — the feature-demo narration is synthetic speech, not my recorded voice.
 
 **Open-source libraries** — Streamlit, pandas, Plotly, google-genai, pytest, matplotlib, nbformat; pptxgenjs and react-icons (slide generation). Fonts: Atkinson Hyperlegible (Braille Institute, via Google Fonts). Colour palette validated for colour-vision deficiency.
 

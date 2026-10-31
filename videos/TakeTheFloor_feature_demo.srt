@@ -1,0 +1,411 @@
+1
+00:00:00,600 --> 00:00:06,698
+Hi, I'm Shermaine Yap from Asia Pacific University in Malaysia. This is TakeTheFloor,
+
+2
+00:00:06,748 --> 00:00:11,761
+my entry for the 305 EmpowHER hackathon, in the Analytics competition.
+
+3
+00:00:11,811 --> 00:00:16,679
+TakeTheFloor shows who held the floor in a meeting, who got cut off,
+
+4
+00:00:16,729 --> 00:00:19,934
+and whose ideas got credited to someone else.
+
+5
+00:00:19,984 --> 00:00:26,010
+Then it gives every person private, Gemma-powered coaching to lead the next meeting.
+
+6
+00:00:26,060 --> 00:00:29,120
+This narration uses a text-to-speech voice.
+
+7
+00:00:30,670 --> 00:00:36,529
+Leadership is won or lost in meetings, and research points to three patterns.
+
+8
+00:00:36,579 --> 00:00:39,752
+First, airtime is uneven. In mixed groups,
+
+9
+00:00:39,802 --> 00:00:45,738
+women's share of speaking time often falls below their share of seats. Second,
+
+10
+00:00:45,788 --> 00:00:47,963
+interruptions are not random.
+
+11
+00:00:48,013 --> 00:00:54,179
+Experimental work found that people interrupted women more often than men. Third,
+
+12
+00:00:54,229 --> 00:00:58,093
+ideas lose their author. Someone repeats your idea,
+
+13
+00:00:58,143 --> 00:01:00,779
+and the room gives them the credit.
+
+14
+00:01:00,829 --> 00:01:05,460
+None of this shows up in meeting notes, so nobody can fix it.
+
+15
+00:01:07,010 --> 00:01:11,171
+Here is the moment I built this for. In this demo meeting,
+
+16
+00:01:11,221 --> 00:01:15,601
+Aisha proposes a student pricing tier, and Mark cuts her off.
+
+17
+00:01:15,651 --> 00:01:20,465
+Two minutes later, Mark pitches the same idea almost word for word,
+
+18
+00:01:20,515 --> 00:01:25,476
+and Daniel says: great idea, Mark, let's go with Mark's pricing plan.
+
+19
+00:01:25,526 --> 00:01:28,380
+TakeTheFloor catches this automatically.
+
+20
+00:01:29,930 --> 00:01:34,281
+The flow is simple. You drop in a transcript from Zoom, Teams,
+
+21
+00:01:34,331 --> 00:01:40,882
+Meet or Otter. Transparent detectors measure airtime, interruptions, hedging and idea credit,
+
+22
+00:01:40,932 --> 00:01:46,276
+and every flag carries its evidence. Then Gemma 4 adds judgement in context,
+
+23
+00:01:46,326 --> 00:01:51,032
+and every person gets private coaching, built from their own words.
+
+24
+00:01:51,082 --> 00:01:53,090
+Let me show you the live app.
+
+25
+00:01:54,640 --> 00:01:58,519
+This is the live app, with the product launch meeting loaded.
+
+26
+00:01:58,569 --> 00:02:02,383
+At the top, Floor Health is thirty-eight out of one hundred.
+
+27
+00:02:02,433 --> 00:02:06,891
+It combines airtime balance with interruptions and mis-credited ideas.
+
+28
+00:02:06,941 --> 00:02:11,850
+There are four real interruptions, and one idea credited to the wrong person.
+
+29
+00:02:11,900 --> 00:02:16,423
+The card shows the evidence: Aisha's original words with the timestamp,
+
+30
+00:02:16,473 --> 00:02:21,060
+Mark's repeat two minutes later, and the moment the credit went to Mark.
+
+31
+00:02:23,618 --> 00:02:28,512
+Below that is airtime. Mark held forty-seven percent of the talk time,
+
+32
+00:02:28,562 --> 00:02:32,397
+more than twice a fair share, while Aisha and Mei Ling,
+
+33
+00:02:32,447 --> 00:02:36,352
+who brought the pricing and data ideas, spoke the least.
+
+34
+00:02:36,402 --> 00:02:38,965
+Every chart has a plain text summary,
+
+35
+00:02:39,015 --> 00:02:41,508
+and a table view for screen readers.
+
+36
+00:02:44,067 --> 00:02:46,557
+The facilitator gets structural fixes,
+
+37
+00:02:46,607 --> 00:02:50,433
+like a round-robin for decisions and a let-them-land norm,
+
+38
+00:02:50,483 --> 00:02:54,978
+because the goal is to change the meeting, not to blame individuals.
+
+39
+00:02:55,028 --> 00:02:58,787
+The full report downloads as an accessible Markdown file.
+
+40
+00:03:01,339 --> 00:03:07,611
+The floor timeline shows every turn on one time axis. Triangles mark interruptions.
+
+41
+00:03:07,661 --> 00:03:10,886
+The diamond is where Aisha raised her idea,
+
+42
+00:03:10,936 --> 00:03:13,857
+and the star is where Mark repeated it.
+
+43
+00:03:13,907 --> 00:03:17,589
+Hovering over a turn shows exactly what was said.
+
+44
+00:03:20,150 --> 00:03:23,791
+The interruptions tab shows who interrupted whom.
+
+45
+00:03:23,841 --> 00:03:27,031
+Mark cut off Aisha twice and Mei Ling once,
+
+46
+00:03:27,081 --> 00:03:29,140
+and Daniel cut off Mei Ling.
+
+47
+00:03:31,698 --> 00:03:34,059
+But not every overlap is rude,
+
+48
+00:03:34,109 --> 00:03:38,318
+so each moment is labelled by Gemma in context. Here,
+
+49
+00:03:38,368 --> 00:03:43,621
+Daniel just says yeah. That's a backchannel, so it is not counted.
+
+50
+00:03:43,671 --> 00:03:48,282
+And here, Aisha says: yes, and, building on Priya's point.
+
+51
+00:03:48,332 --> 00:03:54,148
+That's a supportive overlap. This way, friendly energy is never punished.
+
+52
+00:03:56,712 --> 00:03:59,870
+The idea credit tracker shows the full chain.
+
+53
+00:03:59,920 --> 00:04:01,866
+Gemma gave the idea a title,
+
+54
+00:04:01,916 --> 00:04:07,142
+and the shared key terms and similarity score keep every flag explainable.
+
+55
+00:04:09,701 --> 00:04:15,407
+The language tab measures hedging, like pre-apologies, and self-discounting such as:
+
+56
+00:04:15,457 --> 00:04:17,531
+this might be a dumb idea, but.
+
+57
+00:04:17,581 --> 00:04:20,409
+Each hedge comes with a confident rewrite,
+
+58
+00:04:20,459 --> 00:04:23,561
+so a strong idea sounds like a recommendation.
+
+59
+00:04:26,117 --> 00:04:29,345
+This is the private leadership coach. For Aisha,
+
+60
+00:04:29,395 --> 00:04:32,760
+Gemma highlights real strengths from this meeting,
+
+61
+00:04:32,810 --> 00:04:35,560
+gives three concrete moves for next time,
+
+62
+00:04:35,610 --> 00:04:38,155
+and scripts she can say word for word,
+
+63
+00:04:38,205 --> 00:04:41,297
+like reclaiming the floor when she is cut off.
+
+64
+00:04:43,853 --> 00:04:45,112
+Switching to Priya,
+
+65
+00:04:45,162 --> 00:04:50,762
+Gemma rewrites her own hedged sentences into confident ones that keep her meaning.
+
+66
+00:04:50,812 --> 00:04:55,723
+These notes download for that person only. It is never a public ranking.
+
+67
+00:04:58,275 --> 00:05:04,563
+The accessible recap is written in plain language for teammates who are deaf or hard of hearing,
+
+68
+00:05:04,613 --> 00:05:09,316
+neurodivergent, or working in a second language. It lists the decisions,
+
+69
+00:05:09,366 --> 00:05:11,825
+who does what, and the open questions.
+
+70
+00:05:14,377 --> 00:05:17,984
+The captions tab lists every turn with its speaker,
+
+71
+00:05:18,034 --> 00:05:22,717
+and writes every event out in words, so nothing depends on colour.
+
+72
+00:05:25,269 --> 00:05:32,100
+Accessibility is built in. Here I switch on the dyslexia-friendly Atkinson Hyperlegible font,
+
+73
+00:05:32,150 --> 00:05:33,802
+and high contrast mode.
+
+74
+00:05:33,852 --> 00:05:38,759
+Names can also be anonymised before results are shared with a team.
+
+75
+00:05:41,315 --> 00:05:45,356
+Here is a second meeting, a university project group.
+
+76
+00:05:45,406 --> 00:05:51,223
+Nurul suggests analysing LRT ridership early on and gets interrupted. Later,
+
+77
+00:05:51,273 --> 00:05:55,700
+Wei Jie pitches the same topic, and the group credits him.
+
+78
+00:05:55,750 --> 00:06:01,026
+Notice the green card too. Kavitha builds on Jason's food price idea,
+
+79
+00:06:01,076 --> 00:06:06,815
+and names him. That is the healthy pattern, and TakeTheFloor celebrates it.
+
+80
+00:06:09,374 --> 00:06:14,966
+Finally, the control meeting. In this healthy stand-up, Floor Health is eighty-six,
+
+81
+00:06:15,016 --> 00:06:16,801
+there are no interruptions,
+
+82
+00:06:16,851 --> 00:06:20,811
+and Ravi credits Grace by name when he builds on her audit.
+
+83
+00:06:20,861 --> 00:06:23,734
+TakeTheFloor does not just flag everything.
+
+84
+00:06:26,293 --> 00:06:30,339
+For the analytics, I wrote three meetings with hand labels,
+
+85
+00:06:30,389 --> 00:06:32,491
+including that healthy control.
+
+86
+00:06:32,541 --> 00:06:38,808
+The detectors found five out of five interruptions and four out of four idea credit events,
+
+87
+00:06:38,858 --> 00:06:43,945
+with zero false alarms, and Gemma agreed with all six interruption labels.
+
+88
+00:06:43,995 --> 00:06:51,096
+A sensitivity sweep in my Kaggle notebook shows the result is stable across a wide range of thresholds.
+
+89
+00:06:51,146 --> 00:06:52,831
+To be honest about scope:
+
+90
+00:06:52,881 --> 00:06:56,997
+this shows the method behaves as designed on synthetic data.
+
+91
+00:06:57,047 --> 00:06:59,843
+It is not a claim of real-world accuracy.
+
+92
+00:07:01,393 --> 00:07:06,042
+Accessibility is a feature, not a checkbox: a plain-language recap,
+
+93
+00:07:06,092 --> 00:07:10,811
+readable fonts and contrast, charts that never rely on colour alone,
+
+94
+00:07:10,861 --> 00:07:12,003
+and safe sharing.
+
+95
+00:07:13,553 --> 00:07:17,611
+It is responsible by default. It can run fully offline,
+
+96
+00:07:17,661 --> 00:07:21,869
+or with a local Gemma, so transcripts stay on the device.
+
+97
+00:07:21,919 --> 00:07:26,201
+It describes one meeting, and never grades a person. Next,
+
+98
+00:07:26,251 --> 00:07:29,562
+I want to validate on the AMI meeting corpus,
+
+99
+00:07:29,612 --> 00:07:32,102
+add a live nudge for facilitators,
+
+100
+00:07:32,152 --> 00:07:36,733
+and an amplify button to credit a colleague's idea in one tap.
+
+101
+00:07:38,283 --> 00:07:42,981
+TakeTheFloor makes the invisible visible, so every voice gets heard,
+
+102
+00:07:43,031 --> 00:07:45,075
+and gets the credit. The code,
+
+103
+00:07:45,125 --> 00:07:49,753
+the notebook and the live app are all linked on Devpost. Thank you.
