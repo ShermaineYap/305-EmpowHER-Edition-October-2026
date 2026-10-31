@@ -1,0 +1,11 @@
+# Synthetic demo stand-up (no timestamps) written for TakeTheFloor. All people are fictional.
+Farah: Morning everyone. Quick round, same order as always. Tom, you start.
+Tom: Yesterday I fixed the export bug. Today I'm writing tests for the CSV importer. No blockers.
+Farah: Thanks Tom. Grace?
+Grace: I finished the accessibility audit. We fail colour contrast on the settings page. I recommend we switch the grey text to the darker token this sprint.
+Farah: Good catch, Grace. Let's add that to the sprint. Ravi?
+Ravi: I'm pairing with Grace on the contrast fix after lunch. Building on Grace's audit, I'll also add an automated contrast check to the CI pipeline.
+Grace: That would be great, thank you Ravi.
+Farah: I'm meeting the client at three to confirm the release date. I'll share notes in the channel. Anything else before we wrap?
+Tom: Nothing from me.
+Farah: Great, thanks all. Have a good day.

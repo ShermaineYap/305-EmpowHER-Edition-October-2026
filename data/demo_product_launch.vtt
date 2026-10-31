@@ -1,0 +1,131 @@
+WEBVTT
+
+NOTE Synthetic demo meeting written for TakeTheFloor. All people are fictional.
+
+1
+00:00:06.500 --> 00:00:26.500
+<v Mark>Okay let's get started. Agenda today is the launch plan for StudyNest: pricing, onboarding, and launch channels. Leadership wants pricing locked by Friday, so that is the big one, and I want us out of here with a decision. I have a strong view on it but let's walk through everything first.</v>
+
+2
+00:00:27.100 --> 00:00:33.250
+<v Daniel>Sounds good. Sales has been asking about pricing all week so I'm glad we're doing this.</v>
+
+3
+00:00:33.750 --> 00:00:52.600
+<v Mark>Right. So my starting point is one flat plan at twelve dollars a month. Simple to explain, simple to sell, one line on the pricing page. Every company I have worked at that started with a complicated pricing page regretted it, because sales can't explain it and customers stall.</v>
+
+4
+00:00:53.400 --> 00:01:01.480
+<v Priya>Sorry, I just wanted to ask, does that make sense for the free trial length, or is that a separate question?</v>
+
+5
+00:01:01.880 --> 00:01:03.800
+<v Mark>Separate question, let's park it.</v>
+
+6
+00:01:04.500 --> 00:01:15.270
+<v Mei Ling>I pulled the churn data from the beta. Users who signed up with a university email churned about half as often as everyone else, and most of them</v>
+
+7
+00:01:14.070 --> 00:01:21.760
+<v Mark>Yeah, the beta was tiny though, I wouldn't read too much into it. Daniel, what are you hearing from prospects?</v>
+
+8
+00:01:22.260 --> 00:01:28.420
+<v Daniel>Honestly price is the number one objection. Twelve dollars feels steep for a lot of people.</v>
+
+9
+00:01:29.320 --> 00:01:40.850
+<v Aisha>What if we launch a student tier at half the price of the pro plan, verified with a student email, so we get into university campuses before the competitors and</v>
+
+10
+00:01:39.850 --> 00:01:47.930
+<v Mark>Let's not overcomplicate it. Multiple tiers means more support tickets and a confusing pricing page. Priya, where are we on onboarding?</v>
+
+11
+00:01:48.830 --> 00:01:59.600
+<v Priya>Um, so, this might be a dumb idea, but I think maybe we could sort of shorten the onboarding to three screens? I'm not sure if that's okay.</v>
+
+12
+00:01:58.700 --> 00:01:59.500
+<v Daniel>Yeah.</v>
+
+13
+00:01:59.800 --> 00:02:07.880
+<v Priya>Because right now people drop off at screen four, where we ask for payment details before they have seen any value.</v>
+
+14
+00:02:07.280 --> 00:02:16.120
+<v Aisha>Yes, and if we move the payment step after the first study session, the trial actually shows value before we ask for anything.</v>
+
+15
+00:02:16.520 --> 00:02:21.520
+<v Priya>Exactly, that's the flow I sketched. I can share the prototype after this.</v>
+
+16
+00:02:22.020 --> 00:02:38.950
+<v Mark>Fine, Priya send that over and we will review it async. Next, launch channels. We have a modest budget, roughly what we spent on the beta, and I want most of it going where we can measure results in the first two weeks. Daniel?</v>
+
+17
+00:02:39.450 --> 00:02:48.290
+<v Daniel>We've got the newsletter, the partner webinars, and paid social. I'd put most of the budget into paid social for the first month.</v>
+
+18
+00:02:49.090 --> 00:02:57.940
+<v Mei Ling>Can I add one thing on channels? The beta users who came from referrals had the highest retention, so a referral reward might</v>
+
+19
+00:02:57.040 --> 00:03:01.650
+<v Daniel>Paid social is just faster though, referrals take forever to ramp up.</v>
+
+20
+00:03:02.250 --> 00:03:03.050
+<v Mei Ling>Okay.</v>
+
+21
+00:03:03.550 --> 00:03:14.320
+<v Mark>Let's go with paid social as the main channel and revisit referrals in month two. We can always add channels later, but we can't get launch week back.</v>
+
+22
+00:03:15.020 --> 00:03:21.950
+<v Aisha>I'll draft the launch announcement. I'd like it to mention the trial change once Priya's flow is confirmed.</v>
+
+23
+00:03:22.550 --> 00:03:27.160
+<v Mark>Good. Okay, circling back to pricing, because we do need a decision.</v>
+
+24
+00:03:27.460 --> 00:03:28.260
+<v Daniel>Mm-hmm.</v>
+
+25
+00:03:28.660 --> 00:03:39.050
+<v Mark>What if we did a discounted tier for students, verified with a student email, priced at half the pro plan? That gets us onto university campuses early.</v>
+
+26
+00:03:39.550 --> 00:03:43.780
+<v Daniel>Great idea, Mark. That solves the price objection I keep hearing.</v>
+
+27
+00:03:44.180 --> 00:03:45.720
+<v Priya>Oh, I like that.</v>
+
+28
+00:03:46.220 --> 00:03:50.450
+<v Daniel>Let's go with Mark's pricing plan for the student segment then.</v>
+
+29
+00:03:51.250 --> 00:03:55.090
+<v Aisha>I think that's what I suggested earlier, the student tier.</v>
+
+30
+00:03:54.690 --> 00:04:00.850
+<v Mark>Sure, sure. Anyway, Mei Ling, can you model what half price does to revenue by Friday?</v>
+
+31
+00:04:01.450 --> 00:04:07.980
+<v Mei Ling>Yes, I'll build that model by Friday. I'll use the beta churn numbers for the student segment.</v>
+
+32
+00:04:08.480 --> 00:04:16.180
+<v Mark>Great. Action items: Priya sends the prototype, Aisha drafts the announcement, Mei Ling models pricing, Daniel briefs sales. Thanks everyone.</v>

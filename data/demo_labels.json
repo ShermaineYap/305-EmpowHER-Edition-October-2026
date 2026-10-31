@@ -1,0 +1,71 @@
+{
+  "demo_product_launch.vtt": {
+    "interruptions": [
+      {
+        "interrupter": "Mark",
+        "interrupted": "Mei Ling"
+      },
+      {
+        "interrupter": "Mark",
+        "interrupted": "Aisha"
+      },
+      {
+        "interrupter": "Daniel",
+        "interrupted": "Mei Ling"
+      },
+      {
+        "interrupter": "Mark",
+        "interrupted": "Aisha",
+        "note": "brushes off her credit claim"
+      }
+    ],
+    "non_interruptions": [
+      {
+        "speaker": "Daniel",
+        "label": "backchannel"
+      },
+      {
+        "speaker": "Aisha",
+        "label": "supportive",
+        "note": "'Yes, and\u2026' building on Priya"
+      }
+    ],
+    "credit": [
+      {
+        "outcome": "credit_drift",
+        "originator": "Aisha",
+        "echoed_by": "Mark"
+      }
+    ]
+  },
+  "demo_study_group.txt": {
+    "interruptions": [
+      {
+        "interrupter": "Wei Jie",
+        "interrupted": "Nurul"
+      }
+    ],
+    "credit": [
+      {
+        "outcome": "credit_drift",
+        "originator": "Nurul",
+        "echoed_by": "Wei Jie"
+      },
+      {
+        "outcome": "credited_build",
+        "originator": "Jason",
+        "echoed_by": "Kavitha"
+      }
+    ]
+  },
+  "demo_balanced_standup.txt": {
+    "interruptions": [],
+    "credit": [
+      {
+        "outcome": "credited_build",
+        "originator": "Grace",
+        "echoed_by": "Ravi"
+      }
+    ]
+  }
+}

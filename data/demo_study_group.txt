@@ -1,0 +1,19 @@
+# Synthetic demo meeting written for TakeTheFloor. All people are fictional.
+[00:00:03] Wei Jie: Okay guys, for the data analytics assignment we need to pick a topic and split the work today.
+[00:00:11] Nurul: Sorry, maybe we could do something on public transport? Like analysing LRT ridership data and peak hour crowding in Klang Valley.
+[00:00:19] Wei Jie: Hmm, could be. Anyone else?
+[00:00:22] Jason: I found an open dataset on food prices from DOSM. We could look at how food inflation changed by state.
+[00:00:30] Kavitha: That's interesting. I think maybe we can combine it with household income data, if that makes sense?
+[00:00:37] Wei Jie: Let's think about what the lecturer wants. She said the topic must have a clear stakeholder.
+[00:00:44] Nurul: For transport the stakeholder would be Prasarana, and we could recommend extra trains at the most crowded stations during
+[00:00:51] Wei Jie: Actually, wait, does anyone know if the deadline is week ten or week eleven?
+[00:00:57] Jason: Week eleven, Friday.
+[00:00:59] Kavitha: Building on Jason's food price idea, we could make a dashboard showing which states are hit hardest, with income as the second layer.
+[00:01:08] Jason: Yes, I can clean the DOSM data this weekend.
+[00:01:12] Wei Jie: Okay. But I was also thinking about transport. What if we analyse LRT ridership and peak hour crowding, then recommend extra trains for the most crowded stations? Prasarana would be the stakeholder.
+[00:01:25] Kavitha: Oh that's a great idea, Wei Jie. Very clear stakeholder.
+[00:01:30] Jason: Agreed, Wei Jie's topic is stronger for the rubric.
+[00:01:34] Nurul: Okay.
+[00:01:35] Wei Jie: So the plan is the transport topic. I'll be the leader and do the presentation. Jason does data cleaning, Kavitha does the dashboard, Nurul does the report.
+[00:01:46] Kavitha: Can we keep the food price dashboard idea as a backup in case the LRT data is messy?
+[00:01:54] Wei Jie: Sure, backup. Let's meet again on Thursday.
