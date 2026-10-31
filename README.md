@@ -12,7 +12,7 @@
 | **Kaggle notebook** | [`notebooks/takethefloor_meeting_equity.ipynb`](notebooks/takethefloor_meeting_equity.ipynb) — KAGGLE_LINK_HERE |
 | **Slides** | [`slides/TakeTheFloor_pitch_deck.pptx`](slides/TakeTheFloor_pitch_deck.pptx) · [PDF](slides/TakeTheFloor_pitch_deck.pdf) · Google Slides: GOOGLE_SLIDES_LINK_HERE |
 | **10-min feature demo (MP4)** | FEATURE_VIDEO_LINK_HERE |
-| **5-min backup demo (MP4)** | BACKUP_VIDEO_LINK_HERE |
+| **5-min backup demo (MP4)** | [`videos/TakeTheFloor_backup_demo_5min.mp4`](videos/TakeTheFloor_backup_demo_5min.mp4) (captioned walkthrough) |
 | **Team** | Shermaine Yap Shi Min — Asia Pacific University of Technology & Innovation (APU), Malaysia — solo: research, analytics, engineering, design, pitch |
 
 ![Overview](docs/screenshots/app_overview.png)
@@ -149,6 +149,7 @@ takethefloor/                  analysis engine
 data/                          synthetic demo meetings + ground-truth labels (+ generator)
 notebooks/                     Kaggle analysis notebook
 slides/                        pitch deck (.pptx, .pdf) + generator script
+videos/                        5-minute captioned backup demo (MP4)
 docs/screenshots/              app and notebook screenshots
 docs/                          video scripts and Devpost write-up
 scripts/warm_gemma_cache.py    records real Gemma runs for the demo meetings

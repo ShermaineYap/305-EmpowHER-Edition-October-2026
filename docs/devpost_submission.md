@@ -16,7 +16,7 @@
 - Kaggle notebook: KAGGLE_LINK_HERE
 - Google Slides: GOOGLE_SLIDES_LINK_HERE
 - 10-min feature demo: FEATURE_VIDEO_LINK_HERE
-- 5-min backup demo: BACKUP_VIDEO_LINK_HERE
+- 5-min backup demo: https://github.com/ShermaineYap/305-EmpowHER-Edition-October-2026/blob/main/videos/TakeTheFloor_backup_demo_5min.mp4
 
 ---
 

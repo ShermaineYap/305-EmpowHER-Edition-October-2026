@@ -237,10 +237,12 @@ with tabs[0]:
         )
     )
     fig.add_vline(x=fair, line=dict(color=MUTED, dash="dash", width=2))
-    fig.add_annotation(x=fair, y=1.02, yref="paper", text=f"fair share {fair:.0%}", showarrow=False, font=dict(color=MUTED, size=12), xanchor="left")
+    fig.add_annotation(x=fair, y=1.0, yref="paper", yanchor="bottom", text=f"fair share {fair:.0%}", showarrow=False, font=dict(color=MUTED, size=12), xanchor="left", xshift=4)
     fig.update_yaxes(autorange="reversed")
     fig.update_xaxes(tickformat=".0%", range=[0, max(df["Share of talk time"].max() * 1.25, fair * 1.4)])
-    st.plotly_chart(style_fig(fig, 60 + 46 * len(speakers)), width="stretch", config={"displayModeBar": False})
+    fig = style_fig(fig, 80 + 46 * len(speakers))
+    fig.update_layout(margin=dict(l=10, r=20, t=30, b=10))
+    st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
     top, low = df.iloc[0], df.iloc[-1]
     st.markdown(
         f"<p class='ttf-sub'>Text summary: {esc(top['Person'])} spoke {top['Share of talk time']:.0%} of the time "
